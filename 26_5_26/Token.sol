@@ -61,6 +61,7 @@ abstract contract Token is IToken {
     function approve(address _spender, uint256 _value) external returns (bool success) {
         if (_spender == address(0)) revert ZeroAddress();
         allowance[msg.sender][_spender] = _value;
+        emit Approval(msg.sender,_spender,_value);
         return true;
     }
 
